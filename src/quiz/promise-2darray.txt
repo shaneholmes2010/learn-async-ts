@@ -1,4 +1,23 @@
-- Extract the code in the setTimeout function and replace the setTimeout function  with the extracted code. Then run the main script. 
-- Is there a difference in the flow of execution from when the code was in the setTimeout function?
-- Is the flow of execution in both these examples different from the flow of execution with the examples using the fetch() API, which also returns a promise? 
-- If yes, explain the code execution difference. Add your explanation to this file.
+- Extract the code in the setTimeout function and replace the 
+setTimeout function  with the extracted code. Then run the main script. 
+
+- Is there a difference in the flow of execution from when the code was 
+in the setTimeout function?
+    
+    Yes the result of the sumpromise 1 is no longer pending and spits out 
+a value of 45 even though the error was thrown for the second promise
+
+- Is the flow of execution in both these examples different from the flow 
+of execution with the examples using the fetch() API, which also returns 
+a promise? 
+
+    The flow of execution in the sum2DArray runs synchronously where the fetch runs async
+
+- If yes, explain the code execution difference. Add your explanation to 
+this file.
+
+    This is because the promise has no asynchronous operations in it
+    whereas the fetch request is inherently asynchronous.
+
+
+
