@@ -1,5 +1,6 @@
 
 function negPerRow(arr: number[][], rowIdx: number): Promise<string> {
+
     return new Promise((resolve, reject) => {
         if(arr.length > rowIdx) {
             arr[rowIdx].filter((e) => {
@@ -18,6 +19,21 @@ const array2D_3 = [
     [7, 8, -9]
 ];
 
-const negPerRowPromise1 = negPerRow(array2D_3, 2);
+const rowNegPromises: Promise<string>[] = [];
 
-console.log('negPerRowPromise1:', negPerRowPromise1);
+for(let x = 0; x < array2D_3.length; x++) {
+    rowNegPromises.push(negPerRow(array2D_3, x));
+}   
+
+Promise.all(rowNegPromises)
+    .then((rowNegs) => {
+        let negs = '';
+        console.log('Computing negs of all rows:');
+        rowNegs.forEach(rowNegs => {
+            negs += "\n" + rowNegs;
+        })
+        console.log(`negs: ${negs}`);
+    })
+    .catch((err) => {
+        console.error(`Error Msg: ${err}`);    
+    });
